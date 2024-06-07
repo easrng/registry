@@ -11,4 +11,4 @@ jobs:
       - name: Issue Forms Body Parser
         id: parse
         uses: zentered/issue-forms-body-parser@v2.0.0
-      - run: echo ${{ toJSON(steps.parse.outputs.data["what-identifier-are-you-registering"].text) }}
+      - run: echo ${{ toJSON(steps.parse.outputs.data['what-identifier-are-you-registering'].text) }}
