@@ -6,7 +6,7 @@ body:
   - type: input
     id: identifier
     attributes:
-      label: what would identifier are you registering?
+      label: what identifier are you registering?
       description: it must be numeric and not yet taken (check [the list](https://purl.archive.org/this1))
     validations:
       required: true
