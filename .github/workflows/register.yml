@@ -10,7 +10,10 @@ jobs:
       - id: parse
         uses: zentered/issue-forms-body-parser@v2.0.0
       - id: process
-        run: data=${{ toJSON(steps.parse.outputs.data) }}; number="$(printf "$data" | jq '.["what-identifier-are-you-registering"].text | match("^[0-9]+$").string' --raw-output)"; printf 'the identifier %s is already taken\n'  "$number"
+        run: |
+          data=${{ toJSON(steps.parse.outputs.data) }}
+          number="$(printf "$data" | jq '.["what-identifier-are-you-registering"].text | match("^[0-9]+$").string' --raw-output)"
+          printf 'the identifier %s is already taken\n'  "$number"
       - uses: peter-evans/close-issue@v3.0.1
         with:
           comment: ${{steps.process.outputs.comment}}
